@@ -24,3 +24,7 @@ target_link_libraries(rotate_img ${OpenCV_LIBS})
 
 add_executable(modifyLight_img modifyLight_img.cpp)
 target_link_libraries(modifyLight_img ${OpenCV_LIBS})
+
+add_library(golomb golomb.cpp)
+add_executable(test_golomb golomb_test.cpp)
+target_link_libraries(test_golomb golomb)
