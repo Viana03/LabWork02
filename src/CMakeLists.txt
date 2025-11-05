@@ -15,3 +15,12 @@ SET (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BASE_DIR}/../bin)
 
 add_executable(negative_img negative_img.cpp)
 target_link_libraries(negative_img ${OpenCV_LIBS})
+
+add_executable(mirror_img mirror_img.cpp)
+target_link_libraries(mirror_img ${OpenCV_LIBS})
+
+add_executable(rotate_img rotate_img.cpp)
+target_link_libraries(rotate_img ${OpenCV_LIBS})
+
+add_executable(modifyLight_img modifyLight_img.cpp)
+target_link_libraries(modifyLight_img ${OpenCV_LIBS})
