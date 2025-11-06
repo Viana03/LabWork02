@@ -73,6 +73,31 @@ std::vector<bool> Golomb::encode(int n) const{
     return result;
 }
 
+void Golomb::encodeTo(int n, std::vector<bool>& out) const{
+    if(negMode == NegativeMode::SIGN_MAGNITUDE){
+        out.push_back(n < 0);
+    }
+    unsigned int mapped = mapToUnsigned(n);
+    unsigned int q = mapped / m;
+    unsigned int r = mapped % m;
+
+    for(unsigned int i = 0; i < q; i++){
+        out.push_back(false);
+    }
+    out.push_back(true);
+
+    if(r < cutoff){
+        for(int i = b - 2; i >= 0; i--){
+            out.push_back((r >> i) & 1);
+        }
+    }else{
+        unsigned int adjusted = r + cutoff;
+        for(int i = b - 1; i >= 0; i--){
+            out.push_back((adjusted >> i) & 1);
+        }
+    }
+}
+
 Golomb::DecodeResult Golomb::decode(const std::vector<bool>& bits, size_t startPos) const {
     size_t pos = startPos;
     
@@ -101,21 +126,25 @@ Golomb::DecodeResult Golomb::decode(const std::vector<bool>& bits, size_t startP
     
     unsigned int r = 0;
     
-    if(pos + (b - 1) > bits.size()){
-        throw std::runtime_error("Not enough bits for binary part");
-    }
-    
-    for(unsigned int i = 0; i < b - 1; i++){
-        r = (r << 1) | bits[pos++];
-    }
-    
-    if(r < cutoff){
-    }else{
-        if(pos >= bits.size()){
+    if(b == 0){
+        r = 0;
+    } else {
+        if(pos + (b - 1) > bits.size()){
             throw std::runtime_error("Not enough bits for binary part");
         }
-        r = (r << 1) | bits[pos++];
-        r -= cutoff;
+
+        for(unsigned int i = 0; i < b - 1; i++){
+            r = (r << 1) | bits[pos++];
+        }
+
+        if(r < cutoff){
+        }else{
+            if(pos >= bits.size()){
+                throw std::runtime_error("Not enough bits for binary part");
+            }
+            r = (r << 1) | bits[pos++];
+            r -= cutoff;
+        }
     }
     
     unsigned int mapped = q * m + r;

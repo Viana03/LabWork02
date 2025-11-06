@@ -28,3 +28,9 @@ target_link_libraries(modifyLight_img ${OpenCV_LIBS})
 add_library(golomb golomb.cpp)
 add_executable(test_golomb golomb_test.cpp)
 target_link_libraries(test_golomb golomb)
+
+add_executable(audio_encode audio_encode.cpp audio_codec.cpp)
+target_link_libraries(audio_encode golomb)
+
+add_executable(audio_decode audio_decode.cpp audio_codec.cpp)
+target_link_libraries(audio_decode golomb)

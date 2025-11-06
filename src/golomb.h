@@ -28,6 +28,8 @@ public:
     NegativeMode getNegativeMode() const{return negMode;}
     void setM(unsigned int new_m);
     std::vector<bool> encode(int n) const;
+    // Append encoding of n to an existing bit vector to avoid small allocations
+    void encodeTo(int n, std::vector<bool>& out) const;
     struct DecodeResult{
         int value;
         size_t bitsConsumed;
