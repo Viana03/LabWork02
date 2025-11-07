@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(LabWork01)
+project(LabWork02)
 
 find_package(OpenCV REQUIRED)
 
@@ -12,6 +12,12 @@ SET (CMAKE_CXX_FLAGS_DEBUG "-g3 -fsanitize=address")
 
 SET (BASE_DIR ${CMAKE_SOURCE_DIR} )
 SET (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BASE_DIR}/../bin)
+
+# Library for common code
+add_library(codeclib
+    golomb.cpp
+    image_codec.cpp
+)
 
 add_executable(negative_img negative_img.cpp)
 target_link_libraries(negative_img ${OpenCV_LIBS})
@@ -34,3 +40,9 @@ target_link_libraries(audio_encode golomb)
 
 add_executable(audio_decode audio_decode.cpp audio_codec.cpp)
 target_link_libraries(audio_decode golomb)
+
+add_executable(image_encode image_encode.cpp)
+target_link_libraries(image_encode codeclib ${OpenCV_LIBS})
+
+add_executable(image_decode image_decode.cpp)
+target_link_libraries(image_decode codeclib ${OpenCV_LIBS})
