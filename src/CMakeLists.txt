@@ -19,6 +19,9 @@ add_library(codeclib
     image_codec.cpp
 )
 
+add_executable(extract_channel extract_channel.cpp)
+target_link_libraries(extract_channel ${OpenCV_LIBS} codeclib)
+
 add_executable(negative_img negative_img.cpp)
 target_link_libraries(negative_img ${OpenCV_LIBS})
 
