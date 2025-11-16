@@ -20,7 +20,6 @@ int main(int argc, char **argv) {
     Mat mirroredImage = Mat::zeros(inputImage.size(), inputImage.type());
 
     if (mirrorType == "h") {
-        // Horizontally mirror the image
         for (int i = 0; i < inputImage.rows; i++) {
             for (int j = 0; j < inputImage.cols; j++) {
                 mirroredImage.at<Vec3b>(i, j) = inputImage.at<Vec3b>(i, inputImage.cols - j - 1);
@@ -32,7 +31,6 @@ int main(int argc, char **argv) {
             return -1;
         }
     } else if (mirrorType == "v") {
-        // Vertically mirror the image
         for (int i = 0; i < inputImage.rows; i++) {
             for (int j = 0; j < inputImage.cols; j++) {
                 mirroredImage.at<Vec3b>(i, j) = inputImage.at<Vec3b>(inputImage.rows - i - 1, j);

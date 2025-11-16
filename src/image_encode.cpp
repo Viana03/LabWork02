@@ -5,8 +5,6 @@
 
 void saveEncodedImage(const std::vector<bool>& encoded, const std::string& filename) {
     std::ofstream outFile(filename, std::ios::binary);
-    
-    // Write bits packed into bytes
     unsigned char byte = 0;
     int bitCount = 0;
     
@@ -21,7 +19,6 @@ void saveEncodedImage(const std::vector<bool>& encoded, const std::string& filen
         }
     }
     
-    // Write remaining bits if any
     if (bitCount > 0) {
         byte <<= (8 - bitCount);
         outFile.put(byte);
@@ -38,26 +35,17 @@ int main(int argc, char** argv) {
     
     std::string inputPath = argv[1];
     std::string outputPath = argv[2];
-    
     ImageCodec codec(ImageCodec::Predictor::PAETH_PREDICTOR);
-    
-    // Read input image
     cv::Mat image = cv::imread(inputPath, cv::IMREAD_GRAYSCALE);
     if (image.empty()) {
         std::cerr << "Error: Could not read image " << inputPath << std::endl;
         return 1;
     }
     
-    // Convert image to vector
     std::vector<unsigned char> imageData(image.data, image.data + image.total());
-    
-    // Encode the image
     auto encoded = codec.encode(imageData, image.cols, image.rows);
-    
-    // Save encoded data
     saveEncodedImage(encoded, outputPath);
     
-    // Print compression statistics
     double originalSize = image.total();
     double compressedSize = encoded.size() / 8.0;
     std::cout << "Original size: " << originalSize << " bytes\n";

@@ -18,21 +18,15 @@ public:
 
 private:
     Predictor predictor;
-    unsigned int optimalM;  // Optimal M value for Golomb coding
-    
-    // Helper methods for prediction
+    unsigned int optimalM;
     int predictPixel(const std::vector<unsigned char>& image, int width, int x, int y) const;
     unsigned int calculateOptimalM(const std::vector<int>& residuals) const;
     int paethPredictor(int a, int b, int c) const;
 
 public:
     ImageCodec(Predictor pred = Predictor::AVERAGE_PREDICTOR);
-    
-    // Encoding methods
     std::vector<bool> encode(const std::vector<unsigned char>& image, int width, int height);
     std::vector<unsigned char> decode(const std::vector<bool>& encoded, int width, int height);
-    
-    // Utility methods
     void setPredictor(Predictor pred) { predictor = pred; }
     Predictor getPredictor() const { return predictor; }
 };
