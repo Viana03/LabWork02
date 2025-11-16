@@ -1,13 +1,14 @@
 # LabWork02
 
+[LabWork02 Report](https://github.com/Viana03/LabWork02/blob/main/Lab02_Report.pdf)
+
 ## Compiling
+```bash
 cd src
-
 make all
-
 cd ..
-
 cd bin
+```
 
 ## Exercise 1
 
