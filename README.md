@@ -51,7 +51,7 @@ To check the results view the image at the output directory
 ## Exercise 3
 We made a file with the purpose to test this exercise
 ```bash
-./golomb_test
+./test_golomb 
 ```  
 
 <br>
