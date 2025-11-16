@@ -26,17 +26,19 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    Mat output(image.rows, image.cols, CV_8UC3, Scalar(0, 0, 0));
+    Mat output(image.rows, image.cols, CV_8UC1);
     for (int i = 0; i < image.rows; ++i) {
         for (int j = 0; j < image.cols; ++j) {
             Vec3b pixel = image.at<Vec3b>(i, j);
-            Vec3b outPixel(0, 0, 0);
-            outPixel[channel] = pixel[channel];
-            output.at<Vec3b>(i, j) = outPixel;
+            output.at<uchar>(i, j) = pixel[channel];
         }
     }
 
-    if (!imwrite(outputFile, output)) {
+    // Convert single-channel to 3-channel for PPM format
+    Mat outputBGR;
+    cvtColor(output, outputBGR, COLOR_GRAY2BGR);
+
+    if (!imwrite(outputFile, outputBGR)) {
         cerr << "Error: could not save output image to " << outputFile << endl;
         return 1;
     }
