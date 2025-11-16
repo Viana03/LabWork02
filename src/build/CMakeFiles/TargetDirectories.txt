@@ -1,0 +1,14 @@
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/codeclib.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/extract_channel.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/negative_img.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/mirror_img.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/rotate_img.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/modifyLight_img.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/golomb.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/test_golomb.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/audio_encode.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/audio_decode.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/image_encode.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/image_decode.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/edit_cache.dir
+/home/luisbfsousa/LabWork02/src/build/CMakeFiles/rebuild_cache.dir
