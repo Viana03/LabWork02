@@ -65,9 +65,9 @@ or
 ```bash
  ./audio_encode ../audio/sample01.wav ../output/sample01.golb -b 1024 -i
  ``` 
--b X sao os blocos (default 1024)
+-b 1024 sets block size (default 1024)
 
--i transformation to stereo mid side
+-i enables mid-side transform for stereo (inter-channel prediction)
 
 **Decode audio parameters**
 ```bash
