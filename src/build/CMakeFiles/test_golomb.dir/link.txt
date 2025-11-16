@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -Wextra -std=c++20 -O3 CMakeFiles/test_golomb.dir/golomb_test.cpp.o -o /home/luisbfsousa/LabWork02/bin/test_golomb  libgolomb.a 

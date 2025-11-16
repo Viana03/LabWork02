@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcodeclib.a CMakeFiles/codeclib.dir/golomb.cpp.o CMakeFiles/codeclib.dir/image_codec.cpp.o
-/usr/bin/ranlib libcodeclib.a
